@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Cancellation</title>
+  <link rel="stylesheet" href="/static/css/confirmcancel.css">
+</head>
+<body>
+<div class="card-container">
+  <div class="card">
+    <h1>Are you sure you want to cancel this competition?</h1>
+    <p>This action cannot be undone.</p>
+    <form action="/deleteCompetition" method="POST">
+      <input type="hidden" name="idCompetition" th:value="${idCompetition}">
+      <button type="submit" style="background-color: red; color: white; padding: 10px 20px; border: none;">Yes, Cancel</button>
+    </form>
+    <form action="/manager/managerdashboard" method="GET">
+      <button type="submit" style="background-color: gray; color: white; padding: 10px 20px; border: none;">No, Go Back</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

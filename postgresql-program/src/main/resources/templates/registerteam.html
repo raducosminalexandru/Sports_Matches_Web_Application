@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Team</title>
+    <link rel="stylesheet" href="/static/css/registerteam.css">
+</head>
+<body>
+<div class="container">
+    <h2>Register as a Team</h2>
+    <form action="/addTeam" method="post">
+        <div class="form-group">
+            <label for="numeEchipa">Team Name:</label>
+            <input type="text" id="numeEchipa" name="numeEchipa" required>
+        </div>
+        <div class="form-group">
+            <label for="telefonEchipa">Team Phone:</label>
+            <input type="text" id="telefonEchipa" name="telefonEchipa" required>
+        </div>
+        <div class="form-group">
+            <label for="lotEchipa">Team Lot:</label>
+            <input type="number" id="lotEchipa" name="lotEchipa" required>
+        </div>
+        <div class="form-group">
+            <label for="emailEchipa">Team Email:</label>
+            <input type="email" id="emailEchipa" name="emailEchipa" required>
+        </div>
+        <div class="form-group">
+            <label for="parolaEchipa">Password:</label>
+            <input type="password" id="parolaEchipa" name="parolaEchipa" required>
+        </div>
+        <p style="color: red;" th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
+        <button type="submit" class="submit-btn">Register Team</button>
+    </form>
+</div>
+</body>
+</html>

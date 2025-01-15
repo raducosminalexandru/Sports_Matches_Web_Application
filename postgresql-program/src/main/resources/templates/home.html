@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home Page</title>
+
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+  <script src="/static/js/menu.js" defer></script>
+</head>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+
+  <div id="menuDropdown" class="menu-dropdown">
+    <button onclick="window.location.href='/login'" class="lime-button">Login</button>
+    <button onclick="window.location.href='/redirectToRegister'" class="lime-button">Register</button>
+  </div>
+
+  <div class="w3-display-top-middle">
+    <h1 class="w3-jumbo w3-animate-top welcome-text">WELCOME</h1>
+    <h2 class="statistics-header">Here you can see the statistics of the application</h2>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+
+    <div class="card-container">
+      <div class="role-card">
+        <h3>Manager</h3>
+        <p>Can see all the competitions they are managing, along with detailed information about each competition.</p>
+      </div>
+      <div class="role-card">
+        <h3>Team</h3>
+        <p>Can see players and equipments to their team and see the matches their team is scheduled to play in within the competition.</p>
+      </div>
+      <div class="role-card">
+        <h3>Spectator</h3>
+        <p>Can view all the games they have tickets for and plan to attend with date time details.</p>
+      </div>
+    </div>
+
+    <div class="horizontal-container">
+
+      <div class="spectator-section">
+        <div class="spectator-text"></div>
+        <div class="flex-container">
+          <div class="spectator-card" th:each="spectator : ${topSpectators}">
+            <p class="spectator-text">Spectator with the most attends to matches</p>
+            <h4 th:text="${spectator['nume_spectator']} + ' ' + ${spectator['prenume_spectator']}"></h4>
+            <p th:text="'Matches Attended: ' + ${spectator['nr_meciuri']}"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="top-sport-section">
+        <div class="top-sport-card">
+          <h3 class="sport-name" th:text="${mostPopularSport}"></h3>
+          <p class="sport-description">This sport has the highest number of competitions this season!</p>
+        </div>
+        <h3>Sport with the Most Sponsors</h3>
+        <p th:text="${sportWithMostSponsors}"></p>
+      </div>
+
+      <div class="most-sponsors-section">
+        <h3>Competition with the most sponsors</h3>
+        <p th:text="${competitionWithMostSponsors}"></p>
+
+        <h3>Manager with the most competitions</h3>
+        <p th:text="${managerWithMostCompetitions}"></p>
+      </div>
+
+      <div class="most-competitions-section">
+        <h3>City with the most competitions</h3>
+        <p th:text="${cityWithMostCompetitions}"></p>
+
+        <h3>Competition with the most matches</h3>
+        <p th:text="${competitionWithMostMatches}"></p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<footer class="footer">
+  <p>&copy; 2025 Sports Competition Application. All rights reserved.</p>
+</footer>
+
+</html>

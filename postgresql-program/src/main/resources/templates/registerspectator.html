@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register as Spectator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/registerspectator.css">
+</head>
+<body>
+<div class="container">
+  <div class="registration-form shadow-lg">
+    <h2 class="text-center mb-4">Register as Spectator</h2>
+    <form action="/addSpectator" method="POST">
+      <div class="mb-3">
+        <label for="numeSpectator" class="form-label">First Name</label>
+        <input type="text" id="numeSpectator" name="numeSpectator" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="prenumeSpectator" class="form-label">Last Name</label>
+        <input type="text" id="prenumeSpectator" name="prenumeSpectator" class="form-control" required>
+      </div>
+
+      <div class="mb-3 d-flex gap-3">
+        <label class="form-label">Gender</label>
+        <div>
+          <input type="radio" id="male" name="sex" value="M" class="form-check-input" required>
+          <label for="male" class="form-check-label">Male</label>
+        </div>
+        <div>
+          <input type="radio" id="female" name="sex" value="F" class="form-check-input" required>
+          <label for="female" class="form-check-label">Female</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="metodaPlata" class="form-label">Payment Method</label>
+        <input type="text" id="metodaPlata" name="metodaPlata" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="emailSpectator" class="form-label">Email</label>
+        <input type="email" id="emailSpectator" name="emailSpectator" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="parolaSpectator" class="form-label">Password</label>
+        <input type="password" id="parolaSpectator" name="parolaSpectator" class="form-control" required>
+      </div>
+
+      <p style="color: red;" th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-success w-100">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

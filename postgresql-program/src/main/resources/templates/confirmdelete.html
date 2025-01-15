@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Deletion</title>
+  <link rel="stylesheet" href="/static/css/confirmdelete.css">
+</head>
+<body>
+<div>
+  <h1>Confirm Deletion</h1>
+  <div class="card-container">
+    <div th:each="ticket : ${tickets}">
+      <div class="card">
+        <p>Are you sure you want to delete this ticket for match: <span th:text="${ticket.matchDate}"></span>?</p>
+        <form action="/confirmDelete" method="POST">
+          <input type="hidden" name="spectatorId" th:value="${spectatorId}">
+          <input type="hidden" name="matchId" th:value="${ticket.matchId}">
+          <button type="submit" name="confirm" value="yes">Yes</button>
+          <button type="submit" name="confirm" value="no">No</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Dashboard</title>
+    <link rel="stylesheet" href="/static/css/teamdashboard.css">
+</head>
+<body>
+<nav>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div>
+        <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<div class="card">
+    <h1>Team Dashboard</h1>
+    <p>Team Name: <span th:text="${teamDetails[0].teamName}"></span></p>
+    <p>Team Size: <span th:text="${teamDetails[0].teamSize}"></span></p>
+    <h2>Players</h2>
+    <ul>
+        <li th:each="detail : ${teamDetails}">
+            <p>Player Name:<br> <span th:text="${detail.playerName}"></span></p>
+            <p>Equipment Color: <span th:text="${detail.equipmentColor}"></span></p>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

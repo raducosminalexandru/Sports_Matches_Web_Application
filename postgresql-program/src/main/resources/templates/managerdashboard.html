@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="/static/css/managerdashboard.css">
+</head>
+<body>
+<nav>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div>
+        <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<h1>Welcome to the Manager Dashboard</h1>
+
+<div>
+    <h2>Your Competitions</h2>
+    <div class="card-container">
+        <p class="message" th:if="${!hasCompetitions}" th:text="${message}"></p>
+        <div th:each="competition : ${competitions}">
+            <div class="card">
+                <h3 th:text="${competition.competitionName}"></h3>
+                <form id="update-name-${competition.idCompetition}" action="/updateCompetitionName" method="POST">
+                    <input type="hidden" name="idCompetition" th:value="${competition.idCompetition}">
+                    <input type="text" name="newCompetitionName" placeholder="Enter new competition name" required>
+                    <button type="submit">Submit</button>
+                </form>
+
+                <p><strong>Date:</strong> <span th:text="${competition.competitionDate}"></span></p>
+                <form action="/updateCompetitionDate" method="POST">
+                    <input type="hidden" name="idCompetition" th:value="${competition.idCompetition}">
+                    <input type="datetime-local" name="newCompetitionDate" required>
+                    <button type="submit">Update Date</button>
+                </form>
+                <p><strong>Sport:</strong> <span th:text="${competition.sportName}"></span></p>
+                <p><strong>Location:</strong> <span th:text="${competition.locationName}"></span></p>
+
+                <form action="/confirmcancel" method="GET">
+                    <input type="hidden" name="idCompetition" th:value="${competition.idCompetition}">
+                    <button type="submit" class="cancel-button">Cancel Competition</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

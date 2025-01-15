@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- Importa stilurile W3.CSS pentru design simplu si responsiv -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Importa fontul "Raleway" pentru un aspect mai elegant -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <!-- Link catre fisierul CSS extern pentru stilizare personalizata -->
+  <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+
+<!-- Fundalul paginii -->
+<div class="bgimg">
+  <!-- Sectiunea formularului de autentificare -->
+  <div class="login-form w3-center">
+    <h2>Login</h2>
+    <!-- Afisarea mesajului de eroare daca exista -->
+    <div th:if="${error}" class="error-message">
+      <!-- Textul mesajului de eroare este injectat din server -->
+      <p th:text="${error}"></p>
+    </div>
+    <!-- Formularul de autentificare -->
+    <form action="/login" method="post">
+      <!-- Camp pentru introducerea email-ului -->
+      <input type="email" class="w3-input w3-margin-bottom" placeholder="Email" name="emailManager" required>
+      <!-- Camp pentru introducerea parolei -->
+      <input type="password" class="w3-input w3-margin-bottom" placeholder="Password" name="parolaManager" required>
+      <!-- Buton pentru trimiterea formularului -->
+      <button type="submit" class="w3-button w3-green">Login</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

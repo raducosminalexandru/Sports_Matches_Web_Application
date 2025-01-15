@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectator Dashboard</title>
+
+    <link rel="stylesheet" href="/static/css/spectatordashboard.css">
+</head>
+<body>
+<nav>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div>
+        <form action="/logout" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<h1>Welcome to the Spectator Dashboard</h1>
+
+<div>
+    <h2>Your Tickets</h2>
+    <p class="message" th:if="${message}" th:text="${message}"></p>
+    <div class="card-container" th:if="${tickets}">
+        <div th:each="ticket : ${tickets}">
+            <div class="card">
+                <h3 th:text="'Spectator: ' + ${ticket.spectatorName}"></h3>
+                <p><strong>Ticket Price:</strong> $<span th:text="${ticket.ticketPrice}"></span></p>
+                <p><strong>Match Day:</strong> <span th:text="${ticket.matchDate}"></span></p>
+
+                <form action="/confirmDeletePage" method="GET">
+                    <input type="hidden" name="spectatorId" th:value="${ticket.spectatorId}">
+                    <input type="hidden" name="matchId" th:value="${ticket.matchId}">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
